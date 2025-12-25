@@ -1,34 +1,53 @@
-  import Image from "next/image";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import Profil from "../components/Profil";
-import Project from "../components/Project";
-
-
-
-
-
+ "use client"
+import Members from "@/components/Members";
+import Navbar from "@/components/Navbar";
+import Profile from "@/components/Profil";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+
+  const [value, setValue]=useState(0)
+// function to handle addition
+  const handleAdd=()=>{
+    setValue(value+1)
+  }
+// function to handle subraction
+  const handleSub=()=>{
+    if(value < 1) return 
+    setValue(value-1)
+  }
+
+
   return (
     <div>
+      {2 + 2}
+      {new Date().toLocaleTimeString()}
       <Navbar />
-      <h1>my first next project</h1>
-      <Footer/>.
-      <div className="grid grid-cols-3 gap-4">
-        <Profil name="obed" sex="male" age={30} nationality="nigeria" />
-        <Profil name="dan" sex="male" age={28} nationality="nigeria" />
-        <Profil name="buikem" sex="male" age={24} nationality="nigeria" />
-        <Profil name="joy" sex="female" age={32} nationality="nigeria" />
-        <Profil name="alex" sex="female" age={23} nationality="nigeria" />
-        <Profil name="john" sex="male" age={40} nationality="nigeria" />
-        <Profil name="lisa" sex="female" age={33} nationality="nigeria" />
-      </div>
-     
-     
+      <h1>My first next project</h1>
 
-    </div>
+      <div className="grid grid-cols-3 gap-4">
+
+        <Profile name="Obed" sex="Male" age={30} nationality="Nigeria" />
+        <Profile name="Dollakpo" sex="Male" age={25} nationality="Ghana" />
+        <Profile name="joy" sex="Female" age={28} nationality="Kenya" />
+        <Profile name="buikem" sex="Male" age={32} nationality="South Africa" />
+        <Profile name="Alex" sex="Male" age={29} nationality="USA" />
+        <Profile name="Maria" sex="Female" age={27} nationality="Brazil" />
+        <Profile name="Liam" sex="Male" age={31} nationality="Canada" />
+        <Profile name="Sophia" sex="Female" age={26} nationality="Australia" />
+      </div>
+
+      <Members name="joy" role="nwonye odugwu" bio="A manifesting princess" src="/profile.png"/>
+      <Members name="alali" role="go chops" bio="available for deals" src="/joy.jpg"/>
     
+    
+      <div className="flex gap-x-4 justify-center">
+        <button onClick={handleSub} className="px-3 py-2 bg-red-400 text-white">-</button>
+          <p>{value}</p>
+        <button onClick={handleAdd} className="px-3 py-2 bg-green-400 text-white">+</button>
+      </div>
+    </div>
+
   );
 }
- 
